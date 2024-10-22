@@ -55,7 +55,8 @@ Then you can call banana-cursor-catppuccin using `inputs.banana-cursor-catppucci
 
   home.pointerCursor = {
     name = "Banana-Catppuccin-Mocha";
-    package = inputs.banana-cursor-catppuccin.packages.${pkgs.system};
+    package =
+      inputs.banana-cursor-catppuccin.packages.${pkgs.system}.banana-cursor-catppuccin;
     size = 24;
     gtk.enable = true; # To enable banana cursor catppuccin for gtk
   };
