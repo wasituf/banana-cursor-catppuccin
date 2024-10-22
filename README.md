@@ -28,14 +28,17 @@ Import the module in your outputs. Example:
 {
   ...
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArg = {
-        inherit inputs outputs;
-      };
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    homeConfigurations.default = inputs.home-manager.lib.homeManagerConfiguration {
+      ...
 
       modules = [
-        ./configuration.nix
+        ./home.nix
+        {
+          _module.args = {
+            inherit inputs;
+          };
+        }
 
         ...
       ];
